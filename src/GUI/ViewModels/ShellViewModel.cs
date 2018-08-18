@@ -1,62 +1,46 @@
-﻿using GUI.Shared.Constants;
-using Player.Models;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Regions;
-using System.ComponentModel;
-using System.Windows.Input;
-
-namespace GUI.ViewModels
+﻿namespace GUI.ViewModels
 {
+	using Prism.Commands;
+	using Prism.Mvvm;
+	using System;
+	using System.Windows;
+	using System.Windows.Input;
+
 	public class ShellViewModel : BindableBase
 	{
-		private readonly IRegionManager _regionManager;
-		private readonly PlayerModel _player;
-
 		private string _title;
 
-		public ShellViewModel(IRegionManager regionManager, PlayerModel player)
+		public ShellViewModel()
 		{
-			this._regionManager = regionManager;
-			this._player = player;
+			this._title = "Smallify";
 
-			this._title = $"{this._player?.CurrentTrack?.TrackResource?.Name ?? "Smallify"} - {this._player?.CurrentTrack?.ArtistResource?.Name ?? string.Empty}";
-
-			this._player.PropertyChanged += this.Player_PropertyChanged;
-
-			this.SwitchPlayerCommand = new DelegateCommand<string>(this.SwitchPlayerCommand_Execute);
+			this.MinimiseWindowCommand = new DelegateCommand<object>(this.MinimiseWindowCommand_Execute);
+			this.CloseWindowCommand = new DelegateCommand<object>(this.CloseWindowCommand_Execute);
 		}
 
-		public ICommand SwitchPlayerCommand { get; private set; }
+		public ICommand MinimiseWindowCommand { get; }
+
+		public ICommand CloseWindowCommand { get; }
 
 		public string Title
 		{
-			get
-			{
-				return this._title;
-			}
+			get => this._title;
+			private set => this.SetProperty(ref this._title, value);
+		}
 
-			set
+		private void MinimiseWindowCommand_Execute(object param)
+		{
+			if (param is Window window)
 			{
-				this.SetProperty(ref this._title, value);
+				window.WindowState = WindowState.Minimized;
 			}
 		}
 
-		public void SwitchPlayerCommand_Execute(string playerRequest)
+		private void CloseWindowCommand_Execute(object param)
 		{
-			this._regionManager.RequestNavigate(RegionNames.PlayerRegion, playerRequest);
-		}
-
-		private void Player_PropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			switch (e.PropertyName)
+			if (param is Window window)
 			{
-				case nameof(this._player.CurrentTrack):
-					var status = this._player.GetClientStatus();
-
-					this.Title = $"{status?.Track?.TrackResource?.Name ?? "Smallify"} - {status?.Track?.ArtistResource?.Name ?? string.Empty}";
-					
-					break;
+				window.Close();
 			}
 		}
 	}

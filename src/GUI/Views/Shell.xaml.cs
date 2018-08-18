@@ -1,15 +1,17 @@
-﻿using System.Windows;
-
-namespace GUI.Views
+﻿namespace GUI.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class Shell : Window
-    {
-        public Shell()
-        {
-            this.InitializeComponent();
-        }
-    }
+	using GUI.ViewModels;
+	using System.Windows;
+
+	/// <summary>
+	/// Interaction logic for Shell.xaml
+	/// </summary>
+	public partial class Shell : Window
+	{
+		public Shell()
+		{
+			this.DataContext = new ShellViewModel();
+			this.InitializeComponent();
+		}
+	}
 }
