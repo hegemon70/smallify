@@ -1,12 +1,12 @@
 ﻿namespace GUI.ViewModels
 {
+	using GUI.Interfaces;
 	using Prism.Commands;
 	using Prism.Mvvm;
-	using System;
 	using System.Windows;
 	using System.Windows.Input;
 
-	public class ShellViewModel : BindableBase
+	public class ShellViewModel : BindableBase, IShellViewModel
 	{
 		private string _title;
 
