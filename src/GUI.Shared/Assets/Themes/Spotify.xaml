@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Region Brushes  -->
+    <SolidColorBrush x:Key="BackgroundBrush"
+                     Color="#2C2C2D" />
+
+    <SolidColorBrush x:Key="BackgroundControlBrush"
+                     Color="#252525" />
+
+    <SolidColorBrush x:Key="TextBrush"
+                     Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="TextSecondaryBrush"
+                     Color="#ABABAB" />
+    
+    <SolidColorBrush x:Key="WarningBrush"
+                     Color="#E9233C" />
+
+    <SolidColorBrush x:Key="WindowBackgroundBrush"
+                     Color="#2C2C2D" />
+
+    <SolidColorBrush x:Key="WindowBorderBrush"
+                     Color="#000000" />
+
+    <SolidColorBrush x:Key="WindowTitleBrush"
+                     Color="#252525" />
+
+    <SolidColorBrush x:Key="WindowTextBrush"
+                     Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="WindowHoverBrush"
+                     Color="#A9A9A9" />
+
+    <SolidColorBrush x:Key="WindowHoverExitBrush"
+                     Color="#FF0000" />
+
+    <SolidColorBrush x:Key="WindowPressedBrush"
+                     Color="#808080" />
+
+    <SolidColorBrush x:Key="WindowPressedExitBrush"
+                     Color="#8B0000" />
+    <!--  EndRegion  -->
+</ResourceDictionary>
